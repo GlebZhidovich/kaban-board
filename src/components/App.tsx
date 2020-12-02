@@ -7,7 +7,7 @@ import {
   Switch,
   Link,
 } from 'react-router-dom';
-import Auth from './components/auth';
+import Auth from './auth';
 
 type Style = {
     root: string

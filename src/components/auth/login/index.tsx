@@ -8,6 +8,7 @@ import {
   Link, Grid, Card, Typography, Container,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import getToken from './login.service';
 
 type Style = {
   root: string,
@@ -43,6 +44,12 @@ const useStyles: () => Style = makeStyles(() => ({
 function Login() {
   const classes: Style = useStyles();
 
+  async function isLogged(e: React.FormEvent): Promise<void> {
+    e.preventDefault();
+    const token: string = await getToken('admin', 'admin');
+    console.log(token);
+  }
+
   return (
     <Card className={classes.root}>
       <Container component="main" maxWidth="xs">
@@ -51,7 +58,7 @@ function Login() {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <form className={classes.form} noValidate>
+          <form className={classes.form} noValidate onSubmit={isLogged}>
             <TextField
               variant="outlined"
               margin="normal"
