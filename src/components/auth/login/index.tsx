@@ -8,7 +8,7 @@ import {
   Link, Grid, Card, Typography, Container,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import getToken from './login.service';
+import getToken, { saveToken } from './login.service';
 
 type Style = {
   root: string,
@@ -47,7 +47,7 @@ function Login() {
   async function isLogged(e: React.FormEvent): Promise<void> {
     e.preventDefault();
     const token: string = await getToken('admin', 'admin');
-    console.log(token);
+    saveToken(token);
   }
 
   return (

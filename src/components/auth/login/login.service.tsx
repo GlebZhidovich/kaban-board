@@ -17,4 +17,8 @@ async function getToken(login: string, password: string): Promise<string> {
   return token;
 }
 
+export function saveToken(token: string): void {
+  localStorage.setItem('authToken', token);
+}
+
 export default getToken;
